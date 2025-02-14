@@ -1,4 +1,4 @@
-Feature: Dashboard functionality
+Feature: Dashboard element verification
 
   Background:
     Given Enter the Digydashboard login page

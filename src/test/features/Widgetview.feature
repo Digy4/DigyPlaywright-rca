@@ -1,4 +1,4 @@
-Feature: Dashboard functionality
+Feature: Dashboard widget viewing
 
   Background:
     Given Enter the Digydashboard login page

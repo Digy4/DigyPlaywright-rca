@@ -15,6 +15,7 @@ const { Given, When, Then } = require('@cucumber/cucumber');
          });
 
          Then('the CXO Dashboard should be displayed',async function () {
-            await this.page.waitForSelector('//*[contains(@class, "chakra-heading") and contains(@class, "css-107ng0r")]', { timeout: 10000 });
+            await this.page.waitForSelector('//*[contains(@class, "chakra-heading") and contains(@class, "css-107ng0r")]');
+            await this.page.waitForNavigation({ waitUntil: 'load', timeout: 10000 });
             console.log("CXO Dashboard is displayed!");
          });

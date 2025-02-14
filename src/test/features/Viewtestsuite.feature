@@ -1,4 +1,4 @@
-Feature: Dashboard functionality
+Feature: opening testsuite in dashboard
 
   Background:
     Given Enter the Digydashboard login page
