@@ -1,0 +1,12 @@
+{
+  "scripts": {
+  "test": "npx cucumber-js src/test/features --require src/test/steps --require-module @babel/register"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.26.8",
+    "@babel/preset-env": "^7.26.8",
+    "@babel/register": "^7.25.9",
+    "@cucumber/cucumber": "^11.2.0",
+    "@playwright/test": "^1.50.1"
+  }
+}
