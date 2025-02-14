@@ -11,7 +11,7 @@ const { expect } = require('@playwright/test');
   });
 
   Then('the user able to see widgets on Dashboard', async function () {
-    await this.page.waitForLoadState('networkidle');
+    await this.page.waitForLoadState('load');
     await expect(this.page.getByText('TQACXO')).toBeVisible({ timeout: 20000 });
   });
         

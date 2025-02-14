@@ -2,7 +2,7 @@ const { Given, When, Then } = require('@cucumber/cucumber');
 
          Given('the user is on the Universal Enterprise Quality page', async function () {
             await this.page.goto("https://simulate-timeout.d24efu5b0g21ij.amplifyapp.com/");
-            await this.page.waitForNavigation({ waitUntil: 'networkidle', timeout: 30000 });
+            await this.page.waitForNavigation({ waitUntil: 'load', timeout: 30000 });
             await this.page.getByRole('link', { name: 'Universal Enterprise Quality' }).click();
          });
 
