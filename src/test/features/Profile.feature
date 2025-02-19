@@ -1,31 +1,50 @@
-Feature:Functionality of test suite section when test type=API 
+Feature:User profile
 
-Background:
-    Given Enter the Digydashboard login page
-    When Enter the digy username "digykube"
-    And Enter the digy password "Digy4101!"
-    Then Land on the homepage
+    Background:
+        Given Enter the Digydashboard login page
+        When Enter the digy username "digykube"
+        And Enter the digy password "Digy4101!"
+        Then Land on the homepage
 
-Scenario: Viewing user profile
-    Then User is on profile page
+    Scenario: Viewing user profile
+        Then User is on profile page
 
-Scenario Outline: viewing purging options
-    Given User is on profile page
-    When User click on purging
-    Then User able to see three "<purging option>"
-Examples:
-|purging option|
-|Time Based Purging|
-|Limit Based purging|
-|On-Demand Purging|
+    Scenario Outline: viewing purging options
+        Given User is on profile page
+        When User click on purging
+        Then User able to see three "<purging option>"
+        Examples:
+            | purging option      |
+            | Time Based Purging  |
+            | Limit Based purging |
+            | On-Demand Purging   |
 
-Scenario Outline: Do time base purging
-Given User is on profile page
+    Scenario Outline: Do time base purging
+        Given User is on profile page
+        And User click on purging
+        When User selects time base purging
+        Then User can set limit based on "<Days>" or "<Months>"
+        Then Save the limit to do purging
+
+        Examples:
+            | Days | Months |
+            | 0    | 0      |
+
+    Scenario Outline: validating limit selection
+        When User is on profile page
+        And User click on purging
+        When User select <options> in limit base
+        Then user can see same <options> in on-Demand
+        Examples:
+            | options |
+            | Days    |
+            | Months  |
+
+Scenario Outline: validating records
+When User is on profile page
 And User click on purging
-When User selects time base purging
-Then User can set limit based on "<Days>" or "<Months>"
-Then Save the limit to do purging
-
+Given the <plan limit record> and <current execution record>
+Then check the both exits in usage
 Examples:
-|Days | Months |
-|0  | 0 |
+|plan limit record  | current execution record |
+| 100000            | 3029                      |
