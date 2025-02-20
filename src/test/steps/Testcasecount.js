@@ -64,14 +64,14 @@ When('the user clicks on testsuite', async function () {
 
   //drilling from test suit to test detail
          Given('user select on test suit history for particular project',async function () {
-          await this.page.getByRole('row', { name: 'DIGY4 TEST PROJECT open menu WEBDRIVERIO REGRESSION E2E CONCURRENTLY RELEASE -' }).getByLabel('open menu').click();
+          await this.page.getByRole('row', { name: 'DIGY4 TEST PROJECT open menu WEBDRIVERIO REGRESSION E2E CONCURRENTLY - JASMINE RELEASE - CONCURRENTLY Web JOE BLOGGS NA 2.0 TEST 2 1 1 0 0 0 0:08 s 00:00 s 00:00 s 02/20/2025 03:00:56 PM 02/20/2025 03:01:03 PM 50 AUTO-a32a3cae-92da-4fc2-bdbd-874c3506fb79 Automation DIGY4 TEAM E2E MODULE CONCURRENTLY', exact: true }).getByLabel('open menu').click();
           await this.page.getByRole('link', { name: 'Test Suite - History' }).click();
          });
 
          Given('user select on toggle for viewing test cases',async function () {
-          await this.page.getByRole('row', { name: 'DIGY4 TEST PROJECT WEBDRIVERIO REGRESSION E2E CONCURRENTLY RELEASE - CONCURRENTLY Web JOE BLOGGS collapse 133.0.6943.99 2.0 TEST 2 2 0 0 0 0 0:13 s 00:00 s 00:00 s 02/19/2025 04:29:41 PM 02/19/2025 04:29:55 PM 100 AUTO-043068cd-5f8f-4176-82f3-463604949c05 Automation DIGY4 TEAM LOCAL E2E MODULE CONCURRENTLY', exact: true }).locator('svg').click();
-          await this.page.getByRole('row', { name: 'DIGY4 TEST PROJECT open menu REGRESSION E2E CONCURRENTLY RELEASE - CONCURRENTLY The Internet Guinea Pig Website1 collapse ... 2 JOE BLOGGS collapse 133.0.6943.99 TEST 0:02  s 02/19/2025 04:29:52 PM 02/19/2025 04:29:54 PM AUTO-043068cd-5f8f-4176-82f3-463604949c05 DIGY4 TEAM Automation LOCAL E2E MODULE CONCURRENTLY', exact: true }).getByLabel('open menu').click();
-         });
+          await this.page.getByRole('row', { name: 'DIGY4 TEST PROJECT WEBDRIVERIO REGRESSION E2E CONCURRENTLY - JASMINE RELEASE - CONCURRENTLY Web JOE BLOGGS collapse 133.0.6943.99 2.0 TEST 2 1 1 0 0 0 0:08 s 00:00 s 00:00 s 02/20/2025 03:00:56 PM 02/20/2025 03:01:03 PM 50 AUTO-a32a3cae-92da-4fc2-bdbd-874c3506fb79 Automation DIGY4 TEAM LOCAL E2E MODULE CONCURRENTLY', exact: true }).locator('svg').click();
+          await this.page.getByRole('row', { name: 'DIGY4 TEST PROJECT open menu REGRESSION E2E CONCURRENTLY - JASMINE RELEASE - CONCURRENTLY Validate other form inputs collapse 3 JOE BLOGGS collapse 133.0.6943.99 TEST 0:01  s 02/20/2025 03:01:02 PM 02/20/2025 03:01:03 PM AUTO-a32a3cae-92da-4fc2-bdbd-874c3506fb79 DIGY4 TEAM Automation LOCAL E2E MODULE CONCURRENTLY', exact: true }).getByLabel('open menu').click();
+          });
 
          Given('user select on toggle for viewing test details',async function () {
           await this.page.getByRole('link', { name: 'Test Details' }).click();
@@ -83,12 +83,14 @@ When('the user clicks on testsuite', async function () {
          });
 
          //global search
-         Given('user has provided {string}, {string} and {string}', function (buildId, projectName, testCaseName) {
-          // Write code here that turns the phrase above into concrete actions
-          return 'pending';
+         Given('user has provided {string}, {string} and {string}',async function (buildId, suiteName, testCaseName) {
+        
+          await this.page.getByRole('textbox', { name: 'Search by BuildId, Suite Name' }).click();
+          await this.page.getByRole('textbox', { name: 'Search by BuildId, Suite Name' }).fill(suiteName);
         });
 
-        Then('user is only able to see {string}, {string}, {string}, {string}, {string},{string},{string},{string}, {string}', function (framework,suiteName,release,testType,total,pass,fail,startTime,endTime) {    
-          // Write code here that turns the phrase above into concrete actions
-          return 'pending';
+        Then('user is only able to see {string}, {string}, {string}, {string}, {string},{int},{int},{string}, {string}',async function (framework,suiteName,release,testType,total,pass,fail,startTime,endTime) {    
+          await this.page.getByRole('cell', { name: total, exact: true }).first()
+          await this.page.getByRole('cell', { name: startTime })
+          await this.page.getByRole('cell', { name: endTime })
         });

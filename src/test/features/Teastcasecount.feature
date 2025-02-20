@@ -1,4 +1,4 @@
-Feature:No.of entries feature for Dashboard search functionality
+Feature:test cases count
 
     Background:
         Given Enter the Digydashboard login page
@@ -42,13 +42,13 @@ And user select on toggle for viewing test cases
 And user select on toggle for viewing test details
 Then test detail page should be visible
 
-# Scenario Outline: Global search result should not show new fields in Test Suite/Test case
-# Given user is on Test suite history page
-# And user has provided <build id>, <project name> and <test case name>
-# Then user is only able to see <framework>, <suite name>, <release>, <test type>, <total>,<pass>,<fail>,<start time>, <end time>
+Scenario Outline: Global search result should not show new fields in Test Suite/Test case
+Given user is on Test suite history page
+And user has provided "<build id>", "<suite name>" and "<test case name>"
+Then user is only able to see "<framework>", "<project name>", "<release>", "<test type>", "<total>",<pass>,<fail>,"<start time>", "<end time>"
 
-# Examples:
-# |build id | project name| test case name |
-# |     auto  |vcsh |dashjh|
+Examples:
+|build id | suite name| test case name | framework  | project name  | release   | test type | total | pass | fail | start time | end time |
+| AUTO-eca00965-73ed-49d8-81ac-11b3553c0e8d     | TEST2 | test     | WEBDRIVERIO    | DIGY4 TEST PROJECT |  RELEASE-CONCURRENTLY | WEB | 2 | 1 | 1 |/20/2025 10:31:43 AM   | /20/2025 10:33:10 AM |
 
 

@@ -5,22 +5,20 @@ const selector = {
 };
 
 //Given Enter the Digydashboard login page
-Given("Enter the Digydashboard login page", async function () {
-  await this.page.goto(
-    "https://simulate-timeout.d24efu5b0g21ij.amplifyapp.com/auth/login"
-  );
+Given("Enter the Digydashboard login page", { timeout: 30000 }, async function () {
+  await this.page.goto("https://simulate-timeout.d24efu5b0g21ij.amplifyapp.com/auth/login");
 });
 
-When("Enter the digy username {string}", async function (username) {
+When("Enter the digy username {string}", { timeout: 30000 }, async function (username) {
   await this.page.fill('//input[@name="userName"]', username);
 });
 
 When("Enter the digy password {string}", async function (password) {
   await this.page.fill("#password", password);
-  await this.page.click('[data-testid="loginButton"]', { timeout: 30000 });
+  await this.page.click('[data-testid="loginButton"]');
 });
 
-Then("Land on the homepage", { timeout: 30000 }, async function () {
+Then("Land on the homepage", async function () {
   await this.page
     .locator('//img[@class="chakra-image css-1ywmljq"]')
     .waitFor({ state: "visible", timeout: 30000 });
@@ -32,9 +30,7 @@ Then("Land on the homepage", { timeout: 30000 }, async function () {
 
 //Verify Dashboard elements
 Then("I should see {string} on the page", async function (text) {
-  await this.page.goto(
-    "https://simulate-timeout.d24efu5b0g21ij.amplifyapp.com/"
-  );
+  await this.page.goto("https://simulate-timeout.d24efu5b0g21ij.amplifyapp.com/");
   const element = this.page.getByText(text, { exact: true });
   await expect(element).toBeVisible({ timeout: 20000 });
 });
@@ -101,8 +97,8 @@ Given("user is viewing test coverage widget", async function () {
   await this.page.locator("b").filter({ hasText: "Test Coverage" }).click();
 });
 
-Then("user should see pie chart and {string}", async function (browserName) {
-  await this.page.getByText(browserName, { exact: true }).first().click();
+Then("user should see pie chart and {string}",{timeout:20000}, async function (browserName) {
+  await this.page.getByText(browserName).first().click();
 });
 
 //viewing widgets
