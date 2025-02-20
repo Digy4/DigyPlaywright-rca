@@ -18,7 +18,7 @@ When("Enter the digy password {string}", async function (password) {
   await this.page.click('[data-testid="loginButton"]');
 });
 
-Then("Land on the homepage", async function () {
+Then("Land on the homepage",{ timeout: 30000 }, async function () {
   await this.page
     .locator('//img[@class="chakra-image css-1ywmljq"]')
     .waitFor({ state: "visible", timeout: 30000 });
