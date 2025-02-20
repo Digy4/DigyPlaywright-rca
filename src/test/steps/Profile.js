@@ -39,19 +39,11 @@ Then("Save the limit to do purging", async function () {
 });
 
 //validating selection
- When('User select Days in limit base',async function () {
-   await this.page.locator('select[name="limitSelect"]').selectOption('Days');
+ When('User select {string} in limit base',async function (options) {
+   await this.page.locator('select[name="limitSelect"]').selectOption(options);
  });
 
- Then('user can see same Days in on-Demand',async function () {
-   await this.page.locator('select[name="demandSelect"]');
- });
-
- When('User select Months in limit base',async function () {
-   await this.page.locator('select[name="limitSelect"]').selectOption('Months');
- });
-
- Then('user can see same Months in on-Demand',async function () {
+ Then('user can see same {string} in on-Demand',async function (options) {
    await this.page.locator('select[name="demandSelect"]');
  });
 

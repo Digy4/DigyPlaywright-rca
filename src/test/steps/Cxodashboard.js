@@ -101,10 +101,8 @@ Given("user is viewing test coverage widget", async function () {
   await this.page.locator("b").filter({ hasText: "Test Coverage" }).click();
 });
 
-Then("user should see pie chart and <browser name boxes>", async function () {
-  await this.page.getByText("Covered", { exact: true }).first().click();
-  await this.page.getByText("Not Covered").first().click();
-  await this.page.getByText("Not Applicable").first().click();
+Then("user should see pie chart and {string}", async function (browserName) {
+  await this.page.getByText(browserName, { exact: true }).first().click();
 });
 
 //viewing widgets
