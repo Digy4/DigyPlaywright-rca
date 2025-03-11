@@ -24,7 +24,5 @@ jobs:
 
     - name: Build
       run: |
-        bash
-        npm install
-        npm install --save-dev @cucumber/cucumber
-        npm run test
+        npm ci
+        npx cucumber-js src/test/features --require src/test/steps --require-module @babel/register
