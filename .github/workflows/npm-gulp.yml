@@ -24,6 +24,7 @@ jobs:
 
     - name: Build
       run: |
+        bash
         npm install
-        npm install @cucumber/cucumber
+        npm install --save-dev @cucumber/cucumber
         npm run test
